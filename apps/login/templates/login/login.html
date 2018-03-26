@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div class="formbox">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                Email: <input type="text" name="email">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'no_going_back error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                {% for message in messages %}
+                    {% if message.tags == 'emaillogin error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                Password: <input type="password" name="password">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'passwordlogin error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <div class="formbox">
+            <h1>Registration</h1>
+            <form action="/registration" method="POST">
+                {% csrf_token %}
+                First Name: <input type="text" name="first_name">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'first_name error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                Last Name: <input type="text" name="last_name">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'last_name error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                Email: <input type="text" name="email">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'email error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                Password: <input type="password" name="password">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'password error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                Confirm pw: <input type="password" name="password_confirm">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'password_confirm error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
