@@ -14,7 +14,7 @@
             <h1>Login</h1>
             <form action="/login" method="POST">
                 {% csrf_token %}
-                Email: <input type="text" name="email">
+                Username or Email: <input type="text" name="username_email">
                 <br>
                 {% for message in messages %}
                     {% if message.tags == 'no_going_back error' %}
@@ -62,6 +62,14 @@
                 <br>
                 {% for message in messages %}
                     {% if message.tags == 'email error' %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                Username: <input type="text" name="username">
+                <br>
+                {% for message in messages %}
+                    {% if message.tags == 'username' %}
                         <p class="{{message.tags}}">{{ message }}</p>
                     {%endif%}
                 {%endfor%}

@@ -22,6 +22,9 @@ class UserManager(models.Manager):
         else:
             if User.objects.filter(email = postData['email']):
                 errors['email'] = 'This email already exists'
+        #validate username
+        if User.objects.filter(username = postData['username']):
+            errors['username'] = 'This username already exists'
         #validate password 
         pwc = postData['password_confirm']
         if len(postData['password']) < 8: 
@@ -35,5 +38,6 @@ class User(models.Model):
     first_name = models.CharField(max_length = 255)
     last_name = models.CharField(max_length = 255)
     email = models.CharField(max_length = 255)
+    username = models.CharField(max_length = 255)
     hashedpw = models.TextField()
     objects = UserManager()

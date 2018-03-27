@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    /* outline: 1px solid red; */
+}
+body{
+    background-color: black;
+    font-family: sans-serif;
+}
+.main_logo{
+    width: 32px;
+    margin-top:12px;
+}
+#left_sidebar{
+    width: 168px;
+    height: 643px;
+    background: linear-gradient( rgba(0,0,0,.5) 40%,rgba(0,0,0,1));
+    display: inline-block;
+    color: rgba(255,255,255,.65);
+    padding: 25px;
+}
+#search_bar{
+    background-color: transparent;
+    border: transparent;
+    width: 100px;
+}
+#search_bar, h2{
+    color: rgba(255,255,255,.65);
+    font-size: 15px;
+    font-weight: 700;
+}
+h2{
+    margin-bottom: 12px;
+}
+h3{
+    font-size: 12px;
+    font-weight: 200;
+}
+.search, #user_platforms, #recently_played{
+    border-top: .5px solid rgba(255,255,255,.65);
+    margin: 12px 0;
+    padding-top: 12px;
+}
+#main_content{
+    width: 100%;
+    height: 590px;
+    background: linear-gradient( #943889,black);
+    display: inline-block;
+    vertical-align: top;
+}
+.user_settings{
+    color: rgba(255,255,255,.65);
+    position: relative;
+    top: 310px;
+    left: 0px;
+}
+#media_player{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    background-color: #282828;
+}
