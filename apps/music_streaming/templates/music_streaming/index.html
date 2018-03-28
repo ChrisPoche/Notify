@@ -7,20 +7,23 @@
     <title>Clone-ify</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'music_streaming/css/streamer_style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'music_streaming/script/ajax_script.js' %}"></script>
 </head>
 <body>
     <div id="main_content">
         <div id="left_sidebar">
             <img class="main_logo" src="{% static 'music_streaming/img/Spotify_logo.png' %}" alt="spotify_logo">
             <div class="search">
-                <input type="text" name="search_bar" id="search_bar" value="Search">
+                <h2 class="search_bar stable">Search</h2>
+                <img id="magnify_glass" src="{% static 'music_streaming/img/search_magnifying_glass_icon.png'%}" alt="magnifying glass icon" alt-select="{% static 'music_streaming/img/search_magnifying_glass_icon_select.png'%}" alt-hover="{% static 'music_streaming/img/search_magnifying_glass_icon_hover.png'%}">
             </div>
             <div id="user_platforms">
-                <h2>Home</h2>
-                <h2>Your Music</h2>
+                <h2 id="home" class="stable">Home</h2>
+                <h2 id="your_music" class="stable">Your Music</h2>
             </div> <!-- Space for Main Library and User's Playlists Links, div will make it easier to include border style tags -->
             <div id="recently_played">
-                <h3>RECENTLY PLAYED</h3>
+                <h3 class="stable">RECENTLY PLAYED</h3>
             </div>
             <div class="user_settings">
                 <h3><a href="/logout">Logout</a></h3>

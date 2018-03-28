@@ -10,34 +10,49 @@ body{
 .main_logo{
     width: 32px;
     margin-top:12px;
+    cursor: pointer;
+}
+.stable{
+    color: #9c9c9c;
+}
+.select{
+    color: #00b961;
+}
+.hover{
+    color: #ffffff;
+    cursor: pointer;
 }
 #left_sidebar{
     width: 168px;
     height: 643px;
     background: linear-gradient( rgba(0,0,0,.5) 40%,rgba(0,0,0,1));
     display: inline-block;
-    color: rgba(255,255,255,.65);
     padding: 25px;
 }
-#search_bar{
-    background-color: transparent;
-    border: transparent;
-    width: 100px;
+.search_bar{
+    width: 143px;
+    vertical-align: middle;
+    display: inline-block;
 }
-#search_bar, h2{
-    color: rgba(255,255,255,.65);
+.search_bar, h2{
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
+}
+#magnify_glass{
+    width: 20px;
+    align-content: center;
+    display: inline-block;
 }
 h2{
     margin-bottom: 12px;
+    width: 168px;
 }
 h3{
     font-size: 12px;
     font-weight: 200;
 }
 .search, #user_platforms, #recently_played{
-    border-top: .5px solid rgba(255,255,255,.65);
+    border-top: .5px solid #9c9c9c;
     margin: 12px 0;
     padding-top: 12px;
 }
@@ -49,7 +64,7 @@ h3{
     vertical-align: top;
 }
 .user_settings{
-    color: rgba(255,255,255,.65);
+    color: #9c9c9c;
     position: relative;
     top: 310px;
     left: 0px;
