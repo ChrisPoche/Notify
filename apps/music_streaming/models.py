@@ -21,19 +21,9 @@ class InterestGenre(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Track(models.Model):
-    title = models.CharField(max_length=255)
-    tracknumber = models.IntegerField()
-    length = models.IntegerField() # length in seconds
-    location = models.FileField(upload_to='music/')
-    interests = models.ManyToManyField(Interest, related_name='tracks', blank=True)
-    followers = models.ManyToManyField(User, related_name='follows_track', blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
 class Artist(models.Model):
     name = models.CharField(max_length=255)
-    desc = models.TextField()
+    desc = models.TextField(blank=True)
     followers = models.ManyToManyField(User, related_name='follows_artist')
     artist_image = models.ImageField(upload_to='artistimages/', default='defaultartist.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -44,7 +34,18 @@ class Album(models.Model):
     releaseyear = models.IntegerField()
     artists = models.ManyToManyField(Artist, related_name='artists')
     interests = models.ManyToManyField(InterestGenre, related_name='albums')
-    album_image = models.ImageField(upload_to='albumimages/')
+    album_image = models.ImageField(upload_to='albumimages/', default='defaultalbum.png')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Track(models.Model):
+    album = models.ForeignKey(Album, related_name='track_album')
+    title = models.CharField(max_length=255)
+    tracknumber = models.IntegerField()
+    length = models.IntegerField() # length in seconds
+    location = models.FileField(upload_to='music/')
+    interests = models.ManyToManyField(Interest, related_name='tracks', blank=True)
+    followers = models.ManyToManyField(User, related_name='follows_track', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

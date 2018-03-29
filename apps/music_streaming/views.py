@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from ..login.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from models import Artist, Album, Track
 
 # Create your views here.
 
@@ -25,12 +26,33 @@ def searchPage(request, username):
 def searchResult(request, method="POST"):
     result = request.POST['search_result']
     context = {
-
+        'result' : result
     }
-    return 
+    return render(request, 'music_streaming/_search.html', context)
 
 def playlists(request, username):
     print "AJAX Playlists"
     context = {
     }
     return render(request, 'music_streaming/_your_music.html', context)
+
+def adddata(request, username, method='POST'):
+    Artist.objects.create(
+        name = request.POST['artist'],
+        desc = request.POST['desc'],
+    )
+    Album.objects.create(
+        name = request.POST['album'],
+        releaseyear = request.POST['releaseyear'],
+        interests = request.POST['interest']
+    )
+    album_id = Album.objects.get(name = 'Abbey Road')
+    Track.objects.create(
+        title = request.POST['track'],
+        tracknumber = request.POST['tracknumber'],
+        length = request.POST['length'],
+        location = request.POST['location'],
+        album_id = album_id.id
+    )
+    return redirect('/{}/playlists'.format(username))
+    
