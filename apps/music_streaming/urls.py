@@ -3,4 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'^search$', views.searchPage),
+    url(r'^search_results', views.searchResult),
+    url(r'^playlists$', views.playlists),
 ]

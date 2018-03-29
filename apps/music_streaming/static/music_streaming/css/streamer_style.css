@@ -10,54 +10,152 @@ body{
 .main_logo{
     width: 32px;
     margin-top:12px;
+    cursor: pointer;
+}
+.stable{
+    color: #9c9c9c;
+}
+.select{
+    color: #00b961;
+}
+.hover{
+    color: #ffffff;
+    cursor: pointer;
 }
 #left_sidebar{
     width: 168px;
     height: 643px;
-    background: linear-gradient( rgba(0,0,0,.5) 40%,rgba(0,0,0,1));
     display: inline-block;
-    color: rgba(255,255,255,.65);
     padding: 25px;
+    vertical-align: top;
 }
-#search_bar{
-    background-color: transparent;
-    border: transparent;
-    width: 100px;
+.blackOut{
+    background: black;
 }
-#search_bar, h2{
-    color: rgba(255,255,255,.65);
+.gradient{
+    background: linear-gradient( rgba(0,0,0,.5) 40%,rgba(0,0,0,1));
+}
+.search_bar{
+    width: 143px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.search_bar, h2{
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
+}
+#magnify_glass{
+    width: 20px;
+    align-content: center;
+    display: inline-block;
 }
 h2{
     margin-bottom: 12px;
+    width: 168px;
 }
 h3{
     font-size: 12px;
     font-weight: 200;
 }
 .search, #user_platforms, #recently_played{
-    border-top: .5px solid rgba(255,255,255,.65);
-    margin: 12px 0;
+    border-top: .5px solid #9c9c9c;
+    margin: 6px 0;
     padding-top: 12px;
 }
-#main_content{
+#everything_but_player{
     width: 100%;
-    height: 590px;
     background: linear-gradient( #943889,black);
     display: inline-block;
     vertical-align: top;
 }
 .user_settings{
-    color: rgba(255,255,255,.65);
-    position: relative;
-    top: 310px;
-    left: 0px;
+    width: inherit;
+    color: #9c9c9c;
+    position: fixed;
+    bottom: 105px;
+    padding-top: 15px;
+    border-top: .5px solid #9c9c9c;
+}
+.user_settings h3{
+    margin-left: 3px;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: middle;
+}
+#profile_pic{
+    width: 26px;
+    vertical-align: middle;
+    display: inline-block;
 }
 #media_player{
     display: block;
     position: fixed;
+    bottom: 0;
     width: 100%;
     height: 90px;
     background-color: #282828;
+    border-top: .5px solid black;
+}
+#main_content{
+    margin-left: -4px;
+    display: inline-block;
+    overflow: scroll;
+}
+.toSize{
+    display: inline-block;
+    vertical-align: top;
+    
+}
+#search_header{
+    background-color: #282828;
+    padding: 25px 25px;
+    position: fixed;
+    width: inherit;
+}
+.big_search{
+    font-size: 40px;
+    font-weight: 700;
+    font-stretch: condensed;
+    transform: scaleY(1.2);
+    color: #535353;
+    border: transparent;
+    background-color: transparent;
+    caret-color: #00b961;
+    margin: 0 0 20px;
+}
+input:focus{
+    outline: none;
+}
+#recent_searches{
+    background-color: #0f0f0f;
+    display: block;
+    padding-top: 30px;
+    height: 602px;
+    overflow: scroll;
+    padding-top: 180px;
+}
+.underline_select{
+    border-bottom: 2px solid #00b961;
+    width: 30px;
+    margin: 0 auto;
+}
+h5{
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 0;
+    font-stretch: expanded;
+
+}
+#search_desc{
+    text-align: left;
+    margin: 0;
+}
+.recent_search_history{
+    color: #9c9c9c;
+}
+.rsh_type{
+    text-transform: uppercase;
 }
