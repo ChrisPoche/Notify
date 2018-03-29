@@ -27,6 +27,7 @@ body{
     height: 643px;
     display: inline-block;
     padding: 25px;
+    vertical-align: top;
 }
 .blackOut{
     background: black;
@@ -68,10 +69,23 @@ h3{
     vertical-align: top;
 }
 .user_settings{
+    width: inherit;
     color: #9c9c9c;
-    position: relative;
-    top: 310px;
-    left: 0px;
+    position: fixed;
+    bottom: 105px;
+    padding-top: 15px;
+    border-top: .5px solid #9c9c9c;
+}
+.user_settings h3{
+    margin-left: 3px;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: middle;
+}
+#profile_pic{
+    width: 26px;
+    vertical-align: middle;
+    display: inline-block;
 }
 #media_player{
     display: block;

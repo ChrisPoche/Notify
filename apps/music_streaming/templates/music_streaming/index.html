@@ -26,7 +26,8 @@
                 <h3 class="stable">RECENTLY PLAYED</h3>
             </div>
             <div class="user_settings">
-                <h3><a href="/logout">Logout</a></h3>
+                <img id="profile_pic" src="{% static 'music_streaming/img/generic_profile_pic.png'%}" alt="user_profile_pic">
+                <h3>{{ user.first_name }} {{ user.last_name }} <a href="/logout">Logout</a></h3>
             </div>
         </div>
         <div id="main_content">

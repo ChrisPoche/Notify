@@ -64,10 +64,8 @@ $(document).ready(function(){
     });
     $('#your_music').click(function(){
         console.log('Your music tab was clicked!')
-        $('#everything_but_player').css('background','#1f1d1b')
         $('h2.search_bar').removeClass('hover stable');
         $('h2.search_bar').addClass('select');
-        $('#left_sidebar').removeClass('gradient');
         $('#left_sidebar').addClass('blackOut');
         var url = window.location.href;
         var usernameArr = url.split("/");
@@ -80,6 +78,7 @@ $(document).ready(function(){
         $('#main_content').addClass('gradient');
         $('#main_content').width(width);
         $('#main_content').height(height);
+        $('#left_sidebar').height(height);
         $('#recent_searches').height(height_recsearch);
         $.ajax({
             url: search_url,
@@ -92,8 +91,10 @@ $(document).ready(function(){
     $(window).resize(function(){
         width = ($(window).width()-218.5);
         height = ($(window).height()-78);
+        console.log('height:',height,'width:',width)
         $('#main_content').width(width);
         $('#main_content').height(height);
+        $('#left_sidebar').height(height);
     });
     $('h2').mouseenter(function(){
         if ($(this).not('.search_bar').hasClass('stable')){
