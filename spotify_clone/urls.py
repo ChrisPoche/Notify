@@ -18,6 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('apps.login.urls')),
-    url(r'^(?P<username>\w+)/', include('apps.music_streaming.urls')),
+    url(r'^(?P<username>.*?)/', include('apps.music_streaming.urls')),
     url(r'^admin/', admin.site.urls),
 ]

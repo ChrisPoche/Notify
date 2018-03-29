@@ -25,9 +25,14 @@ body{
 #left_sidebar{
     width: 168px;
     height: 643px;
-    background: linear-gradient( rgba(0,0,0,.5) 40%,rgba(0,0,0,1));
     display: inline-block;
     padding: 25px;
+}
+.blackOut{
+    background: black;
+}
+.gradient{
+    background: linear-gradient( rgba(0,0,0,.5) 40%,rgba(0,0,0,1));
 }
 .search_bar{
     width: 143px;
@@ -53,12 +58,11 @@ h3{
 }
 .search, #user_platforms, #recently_played{
     border-top: .5px solid #9c9c9c;
-    margin: 12px 0;
+    margin: 6px 0;
     padding-top: 12px;
 }
-#main_content{
+#everything_but_player{
     width: 100%;
-    height: 590px;
     background: linear-gradient( #943889,black);
     display: inline-block;
     vertical-align: top;
@@ -72,7 +76,72 @@ h3{
 #media_player{
     display: block;
     position: fixed;
+    bottom: 0;
     width: 100%;
     height: 90px;
     background-color: #282828;
+    border-top: .5px solid black;
+}
+#main_content{
+    margin-left: -4px;
+    display: inline-block;
+    overflow: scroll;
+}
+.toSize{
+    display: inline-block;
+    vertical-align: top;
+    
+}
+#search_header{
+    background-color: #282828;
+    padding: 25px 25px;
+    position: fixed;
+    width: inherit;
+}
+.big_search{
+    font-size: 40px;
+    font-weight: 700;
+    font-stretch: condensed;
+    transform: scaleY(1.2);
+    color: #535353;
+    border: transparent;
+    background-color: transparent;
+    caret-color: #00b961;
+    margin: 0 0 20px;
+}
+input:focus{
+    outline: none;
+}
+#recent_searches{
+    background-color: #0f0f0f;
+    display: block;
+    padding-top: 30px;
+    height: 602px;
+    overflow: scroll;
+    padding-top: 180px;
+}
+.underline_select{
+    border-bottom: 2px solid #00b961;
+    width: 30px;
+    margin: 0 auto;
+}
+h5{
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 0;
+    font-stretch: expanded;
+
+}
+#search_desc{
+    text-align: left;
+    margin: 0;
+}
+.recent_search_history{
+    color: #9c9c9c;
+}
+.rsh_type{
+    text-transform: uppercase;
 }

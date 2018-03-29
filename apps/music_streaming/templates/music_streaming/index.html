@@ -11,8 +11,8 @@
     <script src="{% static 'music_streaming/script/ajax_script.js' %}"></script>
 </head>
 <body>
-    <div id="main_content">
-        <div id="left_sidebar">
+    <div id="everything_but_player">
+        <div id="left_sidebar" class="gradient">
             <img class="main_logo" src="{% static 'music_streaming/img/Spotify_logo.png' %}" alt="spotify_logo">
             <div class="search">
                 <h2 class="search_bar stable">Search</h2>
@@ -29,7 +29,7 @@
                 <h3><a href="/logout">Logout</a></h3>
             </div>
         </div>
-        <div id="header">
+        <div id="main_content">
         </div>
     </div>
     <div id="media_player"></div>
