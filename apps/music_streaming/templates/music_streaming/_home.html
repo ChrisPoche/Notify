@@ -1,0 +1,64 @@
+<script>
+$('p').not('.track_length').on('mouseenter',function(){
+    if ($(this).hasClass('stable')){
+        $(this).addClass('hover');
+        $(this).on('mouseleave',function(){
+        $(this).removeClass('hover');
+        });
+    };
+});
+$('p').on('click',function(){
+    console.log('************** Your search item was clicked! *****************')
+    var what = $(this).text();
+    console.log(what);
+    var search_url = "/"+what;
+    width = ($(window).width()-218.5);
+    height = ($(window).height()-78);
+    $('#main_content').addClass('toSize');
+    $('#main_content').addClass('gradient');
+    $('#main_content').width(width);
+    $('#main_content').height(height);
+    $('#left_sidebar').height(height);
+    if ($(this).hasClass('track')){
+        $.ajax({
+            url: search_url,
+            success: function(serverResponse) {
+                console.log('success. serverResponse:', serverResponse)
+                $('#main_content').html(serverResponse);
+            }
+        });
+    };
+});
+</script>
+{%load static%}
+<div id="home_header">
+    <ul>
+        <a href="/{{username}}/playlists"><li>PLAYLISTS</li></a>
+        <a href="/{{username}}/home"><li>SONGS</li></a>
+        <a href="/{{username}}/albums"><li>ALBUMS</li></a>
+        <a href="/{{username}}/artists"><li>ARTISTS</li></a>
+    </ul>
+    <button id="new_playlist_button">NEW PLAYLIST</button>
+</div>
+
+<div id="user_music_container">
+{% for track in users_music %}
+    <div class="each_track">
+        <br>
+        <div class="track_box_left">
+            <p class="track_before">&nbsp;</p>
+            <p class="little_result stable track">{{ track.title }}</p>
+        </div>
+        <a href='/songs/{{ track.id }}/toplaylist'><img class="img" src="{% static 'music_streaming/img/dots_icon.png'%}" alt="dots"></a>
+        <div class="track_box_right">
+            <p class="stable track_length">{{ track.length }}</p>
+        </div>
+        <br>
+        {% for artist in track.album.artists.all %}
+        <p class="track_artist stable">{{ artist.name }}</p>
+        {% endfor %}
+        <p id="dot">•</p>
+        <p class="track_album stable">{{ track.album.name }}</p>
+    </div>
+    {% endfor %}
+</div>

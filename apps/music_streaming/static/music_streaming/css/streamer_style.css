@@ -125,11 +125,11 @@ h3{
 .big_result{
     display: block;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
     margin-top: 15px;
 }
 .little_result{
-    font-size: 20px;
+    font-size: 15px;
     margin: 13px 20px 0 20px;
 }
 .big_result, .big_search{
@@ -196,15 +196,16 @@ h2.big_result:first-of-type{
 }
 p.track_artist{
     display: inline;
-    font-size: 15px;
+    font-size: 12px;
     margin: 5px 6px 15px 43px;
 }
 p.track_album{
     display: inline;
-    font-size: 15px;
+    font-size: 12px;
     margin: 5px 0 15px 6px;
 }
 p.track_length{
+    font-size: 15px;
     display: block;
     text-align: right;
     justify-content: end;
@@ -229,6 +230,37 @@ p.track_album, p.track_artist, p.track{
 .img{
     width: 21px;
     vertical-align: bottom;
+}
+#user_music_container{
+    padding: 25px;
+}
+#home_header{
+    float: right;
+    width:80%;
+}  
+li{
+    display: inline-block;
+    list-style: none;
+    margin: 35px 15px;
+    text-align: right;
+    font-stretch: extra-condensed;
+    transform: scaleY(.9);
+    vertical-align: top;
+    font-size: 15px;
+    color: white;
+}
+#new_playlist_button{
+    float:right;
+    position: relative;
+    top: -59px;
+    right: 26px;
+    padding: 9px 28px;
+    background-color: #00b961;
+    color: white;
+    font-weight: 100;
+    border: transparent;
+    border-radius: 30px;
+    outline:none;
 }
 
 audio {

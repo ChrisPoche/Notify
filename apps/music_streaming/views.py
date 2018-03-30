@@ -16,6 +16,22 @@ def index(request, username):
     }
     return render(request, 'music_streaming/index.html', context)
 
+def home(request, username):
+    user = User.objects.get(username = request.session['username'])
+    users_music = user.follows_track.all()
+    for track in users_music:
+        minutes = track.length/60
+        if track.length%60 < 10:
+            seconds = '0{}'.format(track.length%60)
+        else:
+            seconds = track.length%60
+        track.length = '{}:{}'.format(minutes,seconds)
+    context = {
+        'users_music' : users_music,
+        'user' : user,
+    }
+    return render(request, 'music_streaming/_home.html', context)
+
 def searchPage(request, username):
     print "AJAX CONNECTED"
     if 'recent_searches' not in request.session:
@@ -155,7 +171,7 @@ def addSongYourMusic(request, username, id):
     addsong = Track.objects.get(id=id)
     addsong.followers.add(user)
     addsong.save()
-    return redirect('/{}/'.format(user.username))
+    return redirect('/{}/home'.format(user.username))
 
 def newplaylist(request, username):
     print "at newplaylist"
