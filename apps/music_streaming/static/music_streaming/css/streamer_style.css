@@ -198,6 +198,10 @@ p.track_artist{
     display: inline;
     font-size: 12px;
     margin: 5px 6px 15px 43px;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
 }
 p.track_album{
     display: inline;

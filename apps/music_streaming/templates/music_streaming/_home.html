@@ -15,7 +15,6 @@ $('p').on('click',function(){
     width = ($(window).width()-218.5);
     height = ($(window).height()-78);
     $('#main_content').addClass('toSize');
-    
     $('#main_content').width(width);
     $('#main_content').height(height);
     $('#left_sidebar').height(height);
@@ -28,6 +27,29 @@ $('p').on('click',function(){
             }
         });
     };
+});
+$('.img').on('click',function(){
+    var url = window.location.href;
+    console.log(usernameArr)
+    var usernameArr = url.split("/");
+    console.log(usernameArr)
+    var username = usernameArr[3];
+    var songid = usernameArr[6];
+    var search_url = "/"+username+"/"+songid+"/toplaylist/add";
+    console.log("***************** SEARCH URL!!!!! *****************",search_url)
+    width = ($(window).width()-218.5);
+    height = ($(window).height()-78);
+    $('#main_content').addClass('toSize');
+    $('#main_content').width(width);
+    $('#main_content').height(height);
+    $('#left_sidebar').height(height);
+        $.ajax({
+            url: search_url,
+            success: function(serverResponse) {
+                console.log('success. serverResponse:', serverResponse)
+                $('#main_content').html(serverResponse);
+            }
+        });
 });
 </script>
 {%load static%}
@@ -49,7 +71,7 @@ $('p').on('click',function(){
             <p class="track_before">&nbsp;</p>
             <p class="little_result stable track">{{ track.title }}</p>
         </div>
-        <a href='/songs/{{ track.id }}/toplaylist'><img class="img" src="{% static 'music_streaming/img/dots_icon.png'%}" alt="dots"></a>
+        <a href='/{{user.username}}/{{ track.id }}/toplaylist/add'><img class="img" src="{% static 'music_streaming/img/dots_icon.png'%}" alt="dots"></a>
         <div class="track_box_right">
             <p class="stable track_length">{{ track.length }}</p>
         </div>

@@ -7,19 +7,26 @@ $('p').not('.track_length').on('mouseenter',function(){
         });
     };
 });
+$('a').not('.track_length').on('mouseenter',function(){
+    if ($(this).hasClass('stable')){
+        $(this).addClass('hover');
+        $(this).on('mouseleave',function(){
+        $(this).removeClass('hover');
+        });
+    };
+});
 $('p').on('click',function(){
     console.log('************** Your search item was clicked! *****************')
     var what = $(this).text();
     console.log(what);
-    var search_url = "/"+what;
+    var search_url = "/artist/"+what;
     width = ($(window).width()-218.5);
     height = ($(window).height()-78);
-    $('#main_content').addClass('toSize');
-    $('#main_content').addClass('gradient');
-    $('#main_content').width(width);
-    $('#main_content').height(height);
+    $('#every_but_player').addClass('toSize');
+    $('#every_but_player').width(width);
+    $('#every_but_player').height(height);
     $('#left_sidebar').height(height);
-    if ($(this).hasClass('track')){
+    if ($(this).hasClass('track_artist')){
         $.ajax({
             url: search_url,
             success: function(serverResponse) {
@@ -64,9 +71,10 @@ $('.img').on('click', function(){
             success: function(serverResponse) {
                 console.log('success. serverResponse:', serverResponse)
                 $('#main_content').html(serverResponse);
-            }
-        });
-     });
+        }
+    });
+});
+
 </script>
 {%load static%}
 {%if track_search %}
@@ -84,7 +92,7 @@ $('.img').on('click', function(){
     </div>
     <br>
     {% for artist in track.album.artists.all %}
-    <p class="track_artist stable">{{ artist.name }}</p>
+    <p class="track_artist"><a class="stable" href="/artist/show/{{ artist.id }}/page">{{ artist.name }}</a></p>
     {% endfor %}
     <p id="dot">•</p>
     <p class="track_album stable">{{ track.album.name }}</p>

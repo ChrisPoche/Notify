@@ -105,11 +105,10 @@ $(document).ready(function(){
             }
         });
     });
-    // Hover over to highlight Home or Music in white, but NOT Search on left sidebar
-    $('#main_content').click(function(){
+    $('p.track').click(function(){
         console.log('Your music tab was clicked!')
-        $('h2.track').removeClass('hover stable');
-        $('h2.track').addClass('select');
+        $('p.track').removeClass('hover stable');
+        $('p.track').addClass('select');
         width = ($(window).width()-218.5);
         widthfull = ($(window).width());
         height = ($(window).height()-78);
@@ -125,6 +124,7 @@ $(document).ready(function(){
             }
         });
     });
+      // Hover over to highlight Home or Music in white, but NOT Search on left sidebar
     $('h2').mouseenter(function(){
         if ($(this).not('.search_bar').hasClass('stable')){
             $(this).not('.search_bar').addClass('hover');
