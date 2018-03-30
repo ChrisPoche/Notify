@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from ..login.models import User
 from django.shortcuts import render, redirect
 from models import Artist, Album, Track
+from forms import UploadForm
 
 import math
 # Create your views here.
