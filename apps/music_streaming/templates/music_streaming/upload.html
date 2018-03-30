@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload a file</title>
+</head>
+<body>
+    <h1>sooper sekret file ^load</h1>
+    <h2>not for babby user</h2>
+    <h3>I couldn't think of a better way to do this</h3>
+    <form  action="/checkfile/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {% for field in uploadform.visible_fields %}
+            <tr>{{field.label}}: {{field}} {{field.errors.as_text}}</tr><br>
+            {% endfor %}
+        </table>
+        <p>leave checkbox unchecked to simply check validity of inputs</p>
+        <p>make sure all these fields are Valid because boy howdy fixing them later kinda sucks</p>
+        <button type="submit">upload???</button>
+    </form>
+</body>
+</html>
