@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 from ..login.models import User
 from django.shortcuts import render, redirect
-from models import Artist, Album, Track
+from models import Artist, Album, Track, Playlist
 from forms import UploadForm
 
-import math
+import math, json
 # Create your views here.
 
 def index(request, username):
@@ -155,3 +155,21 @@ def addSongYourMusic(request, username, id):
     addsong.followers.add(user)
     addsong.save()
     return redirect('/{}/'.format(user.username))
+
+def newplaylist(request, username):
+    print "at newplaylist"
+    playlist = Playlist.objects.create(user=User.objects.get(username=username), playlistjson='{"playlist": []}')
+    print "made playlist"
+    return redirect('/{}/'.format(username))
+
+def addtoplaylist(request, username, songid, playlistid):
+    print "at addtoplaylist"
+    user = User.objects.get(username=username)
+    playlist = user.playlist_set.get(id=playlistid)
+    print "got playlist"
+    playlistjson = json.loads(playlist.playlistjson)
+    playlistjson['playlist'].append(songid)
+    playlist.playlistjson = json.dumps(playlistjson)
+    playlist.save()
+    print "appended to playlist"
+    return redirect('/{}/'.format(username))
