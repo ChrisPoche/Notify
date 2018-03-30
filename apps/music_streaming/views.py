@@ -174,3 +174,10 @@ def addtoplaylist(request, username, songid, playlistid):
     playlist.save()
     print "appended to playlist"
     return redirect('/{}/'.format(username))
+
+def player(request, username, songid):
+    track = Track.objects.get(id=songid)
+    context = {
+        'trackurl': track.location.url
+    }
+    return render(request, 'music_streaming/_playback.html', context)
