@@ -147,13 +147,11 @@ def createdatabaseentries(file, form):
     print album.id
     print 'createdtrack'
 
-
-
-
 def addSongYourMusic(request, username, id):
     user = User.objects.get(id = request.session['id'])
     print user.username
+    print id
     addsong = Track.objects.get(id=id)
     addsong.followers.add(user)
     addsong.save()
-    return redirect('/{}/search_results'.format(user.username))
+    return redirect('/{}/'.format(user.username))
