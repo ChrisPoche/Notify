@@ -93,7 +93,7 @@ $(document).ready(function(){
         width = ($(window).width()-218.5);
         height = ($(window).height()-78);
         $('#main_content').addClass('toSize');
-        $('#main_content').addClass('gradient');
+        
         $('#main_content').width(width);
         $('#main_content').height(height);
         $('#left_sidebar').height(height);
@@ -114,10 +114,9 @@ $(document).ready(function(){
         widthfull = ($(window).width());
         height = ($(window).height()-78);
         $('#main_content').addClass('toSize');
-        $('#main_content').addClass('gradient');
         $('#main_content').width(width);
         $('#main_content').height(height);
-        $('#media_player').width(width);
+        $('#media_player').width(widthfull);
         $.ajax({
             url: search_url,
             success: function(serverResponse) {
@@ -136,7 +135,7 @@ $(document).ready(function(){
     });
     // Listener for sidebar tab change, function called on ln 2 ^
     $('h2').click(sideBarClickOff)
-    // Click on logo to return home and reset sidebar tabs
+    // Click on logo or home tab to return home and reset sidebar tabs
     $('.main_logo').click(function(){
         sideBarClickOff();
         $('#home').addClass('select');
