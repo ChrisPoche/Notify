@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^(?P<username>\w+)/', include('apps.music_streaming.urls')),
     url(r'^artist/', include('apps.music_streaming.urls')),
     url(r'^album/', include('apps.music_streaming.urls')),
-    url(r'^user/', include('apps.music_streaming.urls'))
+    url(r'^user/', include('apps.music_streaming.urls')),
+    url(r'^songs/', include('apps.music_streaming.urls'))
 ]

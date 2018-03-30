@@ -83,3 +83,11 @@ def playlists(request, username):
     context = {
     }
     return render(request, 'music_streaming/_your_music.html', context)
+
+def addSongYourMusic(request, username, id):
+    user = User.objects.get(id = request.session['id'])
+    print user.username
+    addsong = Track.objects.get(id=id)
+    addsong.followers.add(user)
+    addsong.save()
+    return redirect('/{}/search_results'.format(user.username))

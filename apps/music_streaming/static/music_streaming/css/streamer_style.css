@@ -220,9 +220,13 @@ p.track_album, p.track_artist, p.track{
 }
 .track_box_right{
     display: inline-block;
-    width: 48%;
+    width: 6%;
 }
 .track_box_left{
     display: inline-block;
-    width: 48%;
+    width: 88%;
+}
+.img{
+    width: 21px;
+    vertical-align: bottom;
 }
