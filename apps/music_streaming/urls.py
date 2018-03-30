@@ -3,7 +3,9 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'^home$', views.home),
     url(r'^(?P<id>\d+)/tolibrary$', views.addSongYourMusic),
+    url(r'^(?P<id>\d+)/toplaylist$', views.addSongToPlaylist),
     url(r'^search$', views.searchPage),
     url(r'^search_results', views.searchResult),
     url(r'^playlists$', views.playlists),
