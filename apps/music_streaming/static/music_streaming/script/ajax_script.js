@@ -1,7 +1,10 @@
+// function run when Search, Home or Your Music are clicked on left sidebar, resets the sidebar color and returns text back to stable (gray) class
 function sideBarClickOff(){
     $('#main_content').html('');
-    $('#left_sidebar').removeClass('blackOut');
-    $('#left_sidebar').addClass('gradient');
+    if($('#left_sidebar').attr('class') == 'blackOut'){
+        $('#left_sidebar').removeClass('blackOut');
+        $('#left_sidebar').addClass('gradient');
+    };
     $('h2').not('.search_bar').removeClass('hover select');
     $('h2').not(this).addClass('stable');
     $(this).removeClass('hover stable');
@@ -10,11 +13,24 @@ function sideBarClickOff(){
     $('#magnify_glass').attr('alt-hover', '/static/music_streaming/img/search_magnifying_glass_icon_hover.png');
     $('h2.search_bar').addClass('stable');
     $('h2.search_bar').removeClass('select');
-}
+    return;
+};
 $(document).ready(function(){
-    $('#big_search').keyup(function () {
-        $('#big_search').attr('value') = '';
+    width = ($(window).width()-218.5);
+    height = ($(window).height()-78);
+    $('#main_content').addClass('toSize');
+    $('#main_content').width(width);
+    $('#main_content').height(height);
+    $('#left_sidebar').height(height);
+    $(window).resize(function(){
+        width = ($(window).width()-218.5);
+        height = ($(window).height()-78);
+        console.log('height:',height,'width:',width)
+        $('#main_content').width(width);
+        $('#main_content').height(height);
+        $('#left_sidebar').height(height);
     });
+    // If Sidebar - Search + Magnify Glass Icon is gray, hover over adds class that makes elements white and changes cursor to pointer
     $('.search').mouseenter(function(){
         if ($('.search_bar').hasClass('stable')){
             var temp = $('#magnify_glass').attr('src');
@@ -23,7 +39,8 @@ $(document).ready(function(){
             $('h2.search_bar').addClass('hover');
             
         };
-    }); 
+    });
+    // Hover off Sidebar - Search + Magnify Glass Icon restores stable (gray) class
     $('.search').mouseleave(function(){
         if ($('.search_bar').hasClass('hover')){
             var temp = $('#magnify_glass').attr('src');
@@ -32,7 +49,8 @@ $(document).ready(function(){
             $('h2.search_bar').removeClass('hover');
             
         }
-    }); 
+    });
+    // AJAX call to search page, changes Search + Magnify Glass Icon to green, slices username var from url to include in AJAX response
     $('.search').click(function(){
         console.log('search bar was clicked!')
         temp = $('#magnify_glass').attr('src');
@@ -48,12 +66,12 @@ $(document).ready(function(){
         var search_url = "/"+username+"/search";
         width = ($(window).width()-218.5);
         height = ($(window).height()-78);
-        height_recsearch = ($(window).height()-149);
+        height_recsearch = ($(window).height());
         console.log(height_recsearch);
         $('#main_content').addClass('toSize');
         $('#main_content').width(width);
         $('#main_content').height(height);
-        $('#recent_searches').height(height_recsearch);
+        $('#recent_searches').height(height);
         $.ajax({
             url: search_url,
             success: function(serverResponse) {
@@ -62,6 +80,7 @@ $(document).ready(function(){
             }
         });
     });
+    // AJAX call to your music page
     $('#your_music').click(function(){
         console.log('Your music tab was clicked!')
         $('h2.search_bar').removeClass('hover stable');
@@ -73,13 +92,11 @@ $(document).ready(function(){
         var search_url = "/"+username+"/playlists";
         width = ($(window).width()-218.5);
         height = ($(window).height()-78);
-        height_recsearch = ($(window).height()-149);
         $('#main_content').addClass('toSize');
         $('#main_content').addClass('gradient');
         $('#main_content').width(width);
         $('#main_content').height(height);
         $('#left_sidebar').height(height);
-        $('#recent_searches').height(height_recsearch);
         $.ajax({
             url: search_url,
             success: function(serverResponse) {
@@ -88,14 +105,7 @@ $(document).ready(function(){
             }
         });
     });
-    $(window).resize(function(){
-        width = ($(window).width()-218.5);
-        height = ($(window).height()-78);
-        console.log('height:',height,'width:',width)
-        $('#main_content').width(width);
-        $('#main_content').height(height);
-        $('#left_sidebar').height(height);
-    });
+    // Hover over to highlight Home or Music in white, but NOT Search on left sidebar
     $('h2').mouseenter(function(){
         if ($(this).not('.search_bar').hasClass('stable')){
             $(this).not('.search_bar').addClass('hover');
@@ -104,10 +114,13 @@ $(document).ready(function(){
             });
         };
     });
+    // Listener for sidebar tab change, function called on ln 2 ^
     $('h2').click(sideBarClickOff)
+    // Click on logo to return home and reset sidebar tabs
     $('.main_logo').click(function(){
         sideBarClickOff();
         $('#home').addClass('select');
         $('#home').removeClass('stable');
     });
+    
 });
