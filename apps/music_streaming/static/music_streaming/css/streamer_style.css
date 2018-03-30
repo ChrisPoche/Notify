@@ -262,3 +262,7 @@ li{
     border-radius: 30px;
     outline:none;
 }
+
+audio {
+    width: 100%;
+}
