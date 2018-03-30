@@ -155,5 +155,23 @@ $(document).ready(function(){
             }
         });
     });
+    $('#home').click(function(){
+        sideBarClickOff();
+        $('#home').addClass('select');
+        $('#home').removeClass('stable');
+        var url = window.location.href;
+        var usernameArr = url.split("/");
+        var username = usernameArr[3];
+        var search_url = "/"+username+"/home";
+        width = ($(window).width()-218.5);
+        height = ($(window).height()-78);
+        $.ajax({
+            url: search_url,
+            success: function(serverResponse) {
+                console.log('success. serverResponse:', serverResponse)
+                $('#main_content').html(serverResponse);
+            }
+        });
+    });
     
 });
