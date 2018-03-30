@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import apps.music_streaming.views
 
 urlpatterns = [
+    url(r'^upload/', apps.music_streaming.views.uploadpage),
+    url(r'^checkfile/', apps.music_streaming.views.checkfile),
     url(r'^admin/', admin.site.urls),
     url(r'^', include('apps.login.urls')),
     url(r'^(?P<username>\w+)/', include('apps.music_streaming.urls'))

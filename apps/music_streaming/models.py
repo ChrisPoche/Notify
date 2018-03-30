@@ -39,10 +39,10 @@ class Album(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Track(models.Model):
-    album = models.ForeignKey(Album, related_name='track_album')
+    album = models.ForeignKey(Album, related_name='track_album', default=0)
     title = models.CharField(max_length=255)
     tracknumber = models.IntegerField()
-    length = models.IntegerField() # length in seconds
+    length = models.IntegerField(null=True, blank=True) # length in seconds
     location = models.FileField(upload_to='music/')
     interests = models.ManyToManyField(Interest, related_name='tracks', blank=True)
     followers = models.ManyToManyField(User, related_name='follows_track', blank=True)
