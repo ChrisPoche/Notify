@@ -179,6 +179,18 @@ def newplaylist(request, username):
     print "made playlist"
     return redirect('/{}/'.format(username))
 
+def addtoplaylistPage(request, username, songid):
+    print "at addtoplaylistpage"
+    user = User.objects.get(username=request.session['username'])
+    playlists = Playlist.objects.filter(user_id = user.id)
+    song = Track.objects.get(id = songid)
+    context = {
+       'song' : song,
+       'playlists' : playlists,
+    }
+    return render(request, 'music_streaming/_add_playlist.html', context)
+
+
 def addtoplaylist(request, username, songid, playlistid):
     print "at addtoplaylist"
     user = User.objects.get(username=username)
@@ -197,3 +209,17 @@ def player(request, username, songid):
         'trackurl': track.location.url
     }
     return render(request, 'music_streaming/_playback.html', context)
+
+def artist(request, artist):
+    user = User.objects.get(id = request.session['id'])
+    artist = Artist.objects.get(artist = id)
+    albums = Album.objects.filter(artist_id = artist.id)
+    tracks = Track.objects.filter()
+    context = {
+        'artist' : artist,
+        'albums' : albums,
+        'tracks' : tracks,
+        'artist' : artist,
+        'user' : user,
+    }
+    return render(request, 'music_streaming/_artist.html', context)
