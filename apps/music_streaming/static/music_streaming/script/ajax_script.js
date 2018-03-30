@@ -106,6 +106,26 @@ $(document).ready(function(){
         });
     });
     // Hover over to highlight Home or Music in white, but NOT Search on left sidebar
+    $('#main_content').click(function(){
+        console.log('Your music tab was clicked!')
+        $('h2.track').removeClass('hover stable');
+        $('h2.track').addClass('select');
+        width = ($(window).width()-218.5);
+        widthfull = ($(window).width();
+        height = ($(window).height()-78);
+        $('#main_content').addClass('toSize');
+        $('#main_content').addClass('gradient');
+        $('#main_content').width(width);
+        $('#main_content').height(height);
+        $('#media_player').width(width);
+        $.ajax({
+            url: search_url,
+            success: function(serverResponse) {
+                console.log('success. serverResponse:', serverResponse)
+                $('#media_player').html(serverResponse);
+            }
+        });
+    }
     $('h2').mouseenter(function(){
         if ($(this).not('.search_bar').hasClass('stable')){
             $(this).not('.search_bar').addClass('hover');
