@@ -6,6 +6,7 @@
 body{
     background-color: black;
     font-family: sans-serif;
+    counter-reset: tracks;
 }
 .main_logo{
     width: 32px;
@@ -24,7 +25,6 @@ body{
 }
 #left_sidebar{
     width: 168px;
-    height: 643px;
     display: inline-block;
     padding: 25px;
     vertical-align: top;
@@ -108,31 +108,45 @@ h3{
 }
 #search_header{
     background-color: #282828;
-    padding: 25px 25px;
+    padding: 25px 0 10px 25px;
     position: fixed;
     width: inherit;
+    z-index: 10;
+    box-shadow: 0 27px 27px #0f0f0f;
 }
 .big_search{
-    font-size: 40px;
-    font-weight: 700;
-    font-stretch: condensed;
-    transform: scaleY(1.2);
     color: #535353;
     border: transparent;
     background-color: transparent;
     caret-color: #00b961;
-    margin: 0 0 20px;
+    margin: 20px 0 20px;
+    font-size: 40px;
+}
+.big_result{
+    display: block;
+    color: white;
+    font-size: 30px;
+    margin-top: 15px;
+}
+.little_result{
+    font-size: 20px;
+    margin: 13px 20px 0 20px;
+}
+.big_result, .big_search{
+    font-weight: 700;
+    font-stretch: condensed;
+    transform: scaleY(1.2);
 }
 input:focus{
     outline: none;
 }
-#recent_searches{
+#search_field{
     background-color: #0f0f0f;
     display: block;
     padding-top: 30px;
-    height: 602px;
     overflow: scroll;
     padding-top: 180px;
+    height: inherit;
 }
 .underline_select{
     border-bottom: 2px solid #00b961;
@@ -158,4 +172,57 @@ h5{
 }
 .rsh_type{
     text-transform: uppercase;
+}
+#search_results{
+    margin-left: 25px;
+}
+p.track_before::before {
+    counter-increment: tracks;
+    content: counter(tracks)".";
+    color: #9c9c9c;
+}
+p.track_before{
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+}
+p.track{
+    display: inline-block;
+    color: white;
+    overflow-wrap: normal;
+}
+h2.big_result:first-of-type{
+    margin-bottom: -20px;
+}
+p.track_artist{
+    display: inline;
+    font-size: 15px;
+    margin: 5px 6px 15px 43px;
+}
+p.track_album{
+    display: inline;
+    font-size: 15px;
+    margin: 5px 0 15px 6px;
+}
+p.track_length{
+    display: block;
+    text-align: right;
+    justify-content: end;
+}
+#dot{
+    font-size: 6;
+    display: inline;
+    vertical-align: middle;
+    color: #9c9c9c;
+}
+p.track_album, p.track_artist, p.track{
+    font-weight: 200;
+}
+.track_box_right{
+    display: inline-block;
+    width: 48%;
+}
+.track_box_left{
+    display: inline-block;
+    width: 48%;
 }
