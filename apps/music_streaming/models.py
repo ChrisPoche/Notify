@@ -51,6 +51,6 @@ class Track(models.Model):
 
 class Playlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    playlistjson = models.TextField() # stored as JSON data - note https://docs.python.org/2/library/json.html#encoders-and-decoders
+    playlistjson = models.TextField(blank=True) # stored as JSON data - note https://docs.python.org/2/library/json.html#encoders-and-decoders
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
