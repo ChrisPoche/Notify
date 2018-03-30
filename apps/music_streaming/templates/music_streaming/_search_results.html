@@ -78,7 +78,7 @@ $('.img').on('click', function(){
         <p class="track_before">&nbsp;</p>
         <p class="little_result stable track">{{ track.title }}</p>
     </div>
-    <a href='/songs/{{ track.id }}'><img class="img" src="{% static 'music_streaming/img/dots_icon.png'%}" alt="dots"></a>
+    <a href='/songs/{{ track.id }}/tolibrary'><img class="img" src="{% static 'music_streaming/img/dots_icon.png'%}" alt="dots"></a>
     <div class="track_box_right">
         <p class="stable track_length">{{ track.length }}</p>
     </div>

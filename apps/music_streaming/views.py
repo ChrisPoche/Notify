@@ -4,6 +4,7 @@ from ..login.models import User
 from django.shortcuts import render, redirect
 from models import Artist, Album, Track, Playlist
 from forms import UploadForm
+from mutagen.mp3 import EasyMP3
 
 import math, json
 # Create your views here.
