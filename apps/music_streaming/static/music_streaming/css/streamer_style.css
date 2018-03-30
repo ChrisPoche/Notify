@@ -230,3 +230,7 @@ p.track_album, p.track_artist, p.track{
     width: 21px;
     vertical-align: bottom;
 }
+
+audio {
+    width: 100%;
+}
