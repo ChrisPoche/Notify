@@ -111,7 +111,7 @@ $(document).ready(function(){
         $('h2.track').removeClass('hover stable');
         $('h2.track').addClass('select');
         width = ($(window).width()-218.5);
-        widthfull = ($(window).width();
+        widthfull = ($(window).width());
         height = ($(window).height()-78);
         $('#main_content').addClass('toSize');
         $('#main_content').addClass('gradient');
@@ -125,7 +125,7 @@ $(document).ready(function(){
                 $('#media_player').html(serverResponse);
             }
         });
-    }
+    });
     $('h2').mouseenter(function(){
         if ($(this).not('.search_bar').hasClass('stable')){
             $(this).not('.search_bar').addClass('hover');
